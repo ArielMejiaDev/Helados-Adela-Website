@@ -1,0 +1,871 @@
+/* Reset
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+*{
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html,body,p,h1,h2,h3,h4,h5,h6,ul{
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    box-sizing: border-box;
+}
+a,
+a:visited,
+a:link{
+ text-decoration: none;
+ color: #000000;
+}
+ul li{
+    list-style: none;
+}
+
+/* Fonts
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@font-face {
+    font-family: 'Lyno Walt';
+    src: url('../fonts/lyno-walt/LynoWalt.woff2') format('woff2'),
+        url('../fonts/lyno-walt/LynoWalt.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Variables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+    --pink:#FFB1BD;
+    --sky:#ABDEF3;
+    --lpink: #FFEBEE;
+    --padding: 100px 0;
+    --padd: 60px 0;
+  }
+  
+/* Generic Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.fleft{
+    float: left;
+  }
+  
+  .fright{
+    float: right;
+  }
+  
+  .text-center{
+    text-align: center;
+  }
+  
+  .text-left{
+    text-align: left;
+  }
+  
+  .text-right{
+    text-align: right;
+  }
+
+  .text-underline{
+      text-decoration: underline;
+  }
+  
+  .container{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 15px;
+    height: 100%;
+  }
+
+  .container.small{
+      max-width: 800px;
+  }
+
+  .flex{
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .flex-center{
+    align-items: center;
+  }
+
+  .pright{
+      padding-right: 100px;
+  }
+
+  .hide{
+      display: none;
+  }
+  
+  /* General Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.col-two{
+    width: 50%;
+    position: relative;
+}
+
+.large-text{
+    font-size:24px; 
+}
+
+.sticky{
+    background: #ffffff;
+    position: fixed;
+    width: 375px;
+    height: 45px;
+    top: 50%;
+    right: 0;
+    padding: 5px 20px 0 20px;
+    line-height: 1;
+    z-index: 3;
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    transform: rotate(-90deg) translateX(65%);
+    -webkit-transform-origin:100% 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sticky img{
+    margin-right: 20px;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+
+.popup{
+    max-width: 550px;
+    padding: 0;
+    background: var(--pink);
+    position: fixed;
+    visibility: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    opacity: 0;
+    z-index: 9999;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: all 0.3s;
+
+}
+
+.popup img{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.popup.opened{
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.popup .close{
+    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    border-radius: 50%;
+    top: -10px;
+    right: -10px;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+.popup .inner{
+    padding: 0;
+    text-align: center;
+}
+
+.popup .inner h2{
+    font-family: 'Lyno Walt';
+    margin-bottom: 20px;
+}
+
+.popup .inner p{
+    line-height: 30px;
+    margin-bottom: 35px;
+}
+
+.popup .inner span{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.popup .inner span br{
+    display: none;
+}
+
+/* Header
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+header{
+    background: var(--pink);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 115px;
+}
+
+header .main-menu{
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+header .main-menu li{
+    display: inline;
+    list-style: none;
+    margin-left: 45px;
+    position: relative;
+    float:right;
+    
+}
+
+.fixed{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+}
+
+.main-menu li.current::before{
+    content: '';
+    background-image: url(../images/current.svg);
+    background-size: cover; 
+    position: absolute;
+    width: 60px;
+    height: 25px;
+    left: 50%;
+    top: 23px;
+    transform: translate(-50%,0);
+}
+
+.main-menu li a{
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.logo, 
+.main-menu{
+    position: relative;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+/*Mobile nav*/
+
+.menu-btn {
+    display: none;
+}
+
+.sm-show{
+    display: none;
+}
+
+.navicon{
+    width: 80px;
+    height: 60px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.navicon img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navicon span{
+    position: absolute;
+    display: block;
+    top:10px;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 0%;
+    background: var(--pink);
+    transition: all 0.4s;
+}
+
+header .menu-btn:checked ~ .toggle .navicon span {
+   height: 80%;
+}
+
+  
+
+.navicon img:nth-child(2){
+    top: 10px;
+    left: 8px;
+    z-index: 1;
+    width: 73%;
+    height: auto;
+}
+
+.navicon img:nth-child(3){
+    z-index: 3;
+}
+
+header .menu-btn:checked ~ .mobile-nav {
+    height: 100vh;
+}
+
+.mobile-nav{
+    position: fixed;
+    background: var(--pink);
+    text-align: center;
+    width: 100%;
+    height: 115px;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    overflow: hidden;
+    transition: all 0.4s;
+}
+
+.mobile-nav ul{
+    margin: 140px 0 50px;
+}
+
+.mobile-nav ul li a{
+    font-family: 'Lyno Walt';
+    font-size: 34px;
+    line-height: 76.8px;
+}
+
+.social-nets a{
+    margin-right: 20px;
+}
+.social-nets img{
+    height: 16px;
+}
+
+/* Home
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.adela-hero{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.adela-hero #adela-video{
+    position: relative;
+    left: 0;
+    top: 0;
+    min-width: 100%; 
+    min-height: 100vh;
+}
+
+/* About
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.about-st{
+    position: relative;
+    padding: var(--padding);
+    background: var(--pink);
+}
+
+.eyes-box{
+    position: relative;
+    margin:0 auto 60px;
+    width: 202px;
+}
+
+.eyes-box img:nth-child(1){
+    position: absolute;
+    bottom: 12px;
+    left: 15px;
+    animation: ojos 4s infinite;
+    transition: all 1s;
+}
+
+.img-slider .swiper-pagination{
+    margin-top: 80px;
+}
+
+.image-box{
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.image-box img{
+    width: 100%;
+    height: auto;
+}
+
+@keyframes ojos {
+    0% {
+      left: 18px;
+    }
+    50% {
+      left: 38px;
+    }
+    100% {
+        left: 18px;
+    }
+  }
+
+.about-st p{
+    max-width: 630px;
+    margin: 30px auto 0;
+}
+
+/* Sabores
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.menus-head{
+    width:100%;
+}
+
+.menus-head h3{
+    font-family: 'Lyno Walt';
+    font-size: 36px;
+    margin-bottom: 60px;
+    cursor: pointer;
+}
+.menus-st{
+    padding: var(--padding);
+    background-color: var(--lpink);
+}
+
+.menus-st p{
+    font-size: 18px;
+}
+
+.menus-st p img{
+    top: 8px;
+    margin-left: 10px;
+    position: relative;
+}
+
+.menus-st .swiper-container {
+    max-width: 400px;
+    margin: 0 0 40px;
+}
+
+.swiper-pagination .swiper-pagination-bullet{
+    background: transparent;
+    border: 2px solid #000000;
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active{
+    background: #000000;
+}
+
+.list {
+    margin-bottom: 60px;
+}
+.list li{
+    font-size: 24px;
+    line-height: 30px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.menu-list{
+    max-width: 400px;
+}
+
+.menu-list li::before{
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 8px;
+    left: 0;
+    border-bottom: 3px dotted #000000;
+}
+
+.menu-list li span{
+    background-color: var(--lpink);
+    position: relative;
+    z-index: 1;
+}
+
+
+.menu-list li span:nth-child(1){
+    padding-right: 3px;
+}
+
+
+.menu-list li span:nth-child(2){
+    width: 98px;
+    text-align: left;
+    padding-left: 5px;
+    display: inline-block;
+}
+
+.menus-images{
+    position: relative;
+}
+
+.menus-images img{
+    position: absolute;
+}
+
+.menus-images img:nth-child(1){
+    top: 130px;
+    left: 0;
+
+}
+
+.menus-images img:nth-child(2){
+    top: 0;
+    right: 0;
+    border: 8px solid #000;
+    border-radius: 50%;
+}
+
+@keyframes rotating {
+    from {
+      -ms-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+    to {
+      -ms-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }
+  .rotating {
+    -webkit-animation: rotating 9s linear infinite;
+    -moz-animation: rotating 9s linear infinite;
+    -ms-animation: rotating 9s linear infinite;
+    -o-animation: rotating 9s linear infinite;
+    animation: rotating 9s linear infinite;
+  }
+
+/* Contact page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.contact-st{
+    background-color: var(--sky);
+    padding: var(--padding);
+}
+
+.contact-form{
+    padding-left: 100px;
+}
+
+
+.contact-form .field-box{
+    margin-bottom: 30px;
+    position: relative;
+}
+.contact-form .col-two:nth-child(1){
+    margin-right: 9px;
+}
+
+.contact-form .col-two:nth-child(2){
+    margin-left: 18px;
+}
+.contact-form .field-box input,
+.contact-form .field-box textarea{
+    width: 100%;
+    padding: 13px 0 13px 10px;
+    border: 0;
+    position: relative;
+    resize: none;
+    font-size: 16px;
+}
+
+.contact-form .field-box .focus{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--pink);
+    transition: all 0.4s;
+}
+
+.contact-form .field-box .focus.tarea{
+    bottom: 1px;
+}
+
+.field-box input:focus ~ .focus,.field-box textarea:focus ~ .focus{
+    left: 0;
+    width: 100%;
+}
+
+.contact-form .field-box input:focus,
+.contact-form .field-box textarea:focus{
+    outline: none;
+}
+
+.contact-form button{
+    width: 100%;
+    background: none;
+    background-color: var(--pink);
+    border: none;
+    padding: 10px 0;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    z-index: 1;
+    position: relative;
+    cursor: pointer;
+
+}
+
+.adela-form legend{
+    max-width: 420px;
+    margin: 0 auto 40px;
+
+}
+
+.contact-st img:nth-child(1){
+    margin-bottom: 90px;
+}
+
+.instagram-st{
+    background-color: var(--pink);
+    padding: var(--padding);
+}
+
+.instagram-st h2{
+    font-family: 'Lyno Walt';
+    font-size: 30px;
+    margin-bottom: 60px;
+}
+
+ .post{
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.post .box-img{
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+}
+
+.post .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sky);
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.post:hover .overlay{
+    opacity: 0.8;
+}
+
+footer{
+    background-color: var(--pink);
+    padding: 0 0 60px;
+}
+
+.widget ul li{
+    font-size: 20px;
+    line-height: 28px;
+}
+
+/* Breackpoints */
+
+/* Tablets */
+@media (max-width: 767.98px) {
+    header .flex{
+        display: inline-block;
+    }
+
+    .logo{
+        position: fixed;
+        right: 30px;
+        top: 50px;
+        z-index: 10;
+        width: 110px;
+    }
+
+    .logo img{
+        width: 100%;
+    }
+
+    .toggle{
+        position: fixed;
+        left: 30px;
+        top: 30px;
+        z-index: 10;
+    }
+
+    .col-two{
+        width: 100%;
+    }
+    .sm-hide{
+        display: none;
+    }
+
+    .sm-show{
+        display: block;
+    }
+
+    .pright{
+        padding: 0;
+    }
+
+    /* Home */ 
+
+    .adela-hero{
+        overflow: hidden;
+        width: 100%;
+        height: 320px;
+        background: url('../images/hero.jpg');
+        background-position: cover;
+    }
+    
+    .adela-hero #adela-video {
+        position: relative;
+        min-width: auto;
+        min-height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        top: 115px;
+        bottom: initial;
+
+    }
+    
+
+    /*Sabores*/
+    .menus-st .swiper-container{
+        max-width: 100%;
+    }
+
+    .menus-container.flex{
+        flex-direction: column;
+    }
+    
+
+    .menus-st p{
+        text-align: center;
+    }
+
+    .menus-images{
+        width: 60%;
+        margin: 80px auto 0;
+    }
+    .menus-images img{
+        width: 100%;
+    }
+
+    .menus-images img:nth-child(1){
+        position: relative;
+        top: initial;
+    }
+
+    /*Contacto*/
+    .contact-st > .flex{
+        flex-direction: column;
+    }
+
+    .contact-form{
+        padding: 0;
+        margin-top: 50px;
+    }
+    .contact-st img{
+        padding: 0 30px;
+    }
+    
+    .contact-st img{
+        width: 100%;
+    }
+
+    footer .flex{
+        flex-direction: column;
+    }
+
+    .widget{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .widget:last-child{
+        margin: 0;
+    }
+
+    .widget .social-nets li:nth-child(2){
+       margin-top: 120px;
+    }
+    .widget .social-nets li:nth-child(2) a img{
+        height: 40px;
+        margin: 0 20px;
+    }
+    
+    p.social-nets{
+        margin-top: 60px; 
+    }
+
+    .social-nets a{
+        margin-right: 20px;
+    }
+    .social-nets img{
+        height: 35px;
+    }
+}
+
+/* Phones */
+@media (max-width: 575.98px) { 
+    .popup{
+        width: 95%;
+    }
+
+    .popup p{
+        font-size: 14px;
+    }
+    .popup .inner span{
+        font-size: 16px;
+    }
+
+    .about-st, 
+    .menus-st,
+    .contact-st,
+    .instagram-st {
+        padding: var(--padd);
+    }
+    .large-text{
+        font-size: 16px;
+    }
+    
+    .menus-head h3{
+        font-size: 24px;
+    }
+
+    .list{
+        padding-right: 50px;
+    }
+
+    .list li{
+        font-size: 18px;
+    }
+
+    .instagram-st h2{
+        font-size: 22px;
+    }
+}
+
+
+
